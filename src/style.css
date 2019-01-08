@@ -1,0 +1,12 @@
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.hello{
+  /* background: url('./timg.jpg'); */
+  color: red;
+}
+body{
+  background: red
+}
