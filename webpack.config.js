@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack')
+
 module.exports = {
   mode: 'development',
   entry: {
@@ -12,13 +13,21 @@ module.exports = {
   },
   output: {
     // filename: 'bundle.js',
-    filename: '[name].bundle.js',
+    // filename: '[name].bundle.js',
+    filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
   },
   optimization: {
+    runtimeChunk: 'single',
     splitChunks: {
-      chunks: 'all'
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
     }
   },
   devtool: 'inline-source-map',
@@ -35,9 +44,10 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      title: '大鑫'
+      title: 'Caching'
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.HashedModuleIdsPlugin()
   ],
   mode: 'development',
   optimization: {

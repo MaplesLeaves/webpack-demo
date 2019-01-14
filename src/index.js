@@ -27,12 +27,12 @@ function component() {
   // 创建btn
   var btn = document.createElement('button');
   btn.innerHTML = 'Click me and check the console!';
-  btn.onclick = e => import(/* webpackChunkName: "print" */ './print').then(module => {
-         var print = module.default;
+  // btn.onclick = e => import(/* webpackChunkName: "print" */ './print').then(module => {
+  //        var print = module.default;
     
-         print();
-       });
-
+  //        print();
+  //      });
+btn.onclick = printMe.bind(null, 'Hello webpack!')
   element.appendChild(btn);
   return element;
 }
