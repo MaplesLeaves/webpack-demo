@@ -8,9 +8,14 @@
    },
    plugins: [
      new CleanWebpackPlugin(['dist']),
-     new HtmlWebpackPlugin({
-       title: 'Production'
-     })
+    //  new HtmlWebpackPlugin({
+    //    title: 'Production'
+    //  })
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: './src/index.html',
+      inject: true
+    }),
    ],
    output: {
      filename: '[name].bundle.js',

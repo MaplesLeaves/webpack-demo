@@ -42,12 +42,17 @@ module.exports = {
     }]
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    // new CleanWebpackPlugin(['dist']),
+    // // new HtmlWebpackPlugin({
+    // //   title: 'Caching'
+    // // }),
+    // new webpack.HotModuleReplacementPlugin(),
+    // new webpack.HashedModuleIdsPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Caching'
+      filename: './src/index.html',
+      template: 'index.html',
+      inject: true
     }),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.HashedModuleIdsPlugin()
   ],
   mode: 'development',
   optimization: {
